@@ -9,25 +9,28 @@ def main():
 
     option = 0
     while option != 4:
-        option = int(input("""Select an option:
+        try:
+            option = int(input("""Select an option:
     1 - Add product to cart
     2 - Remove product from cart
     3 - Get total price from cart
     4 - Exit program
 --------------------------------
 """))
+            match option:
+                case 1:
+                    add_product()
+                case 2:
+                    remove_product()
+                case 3:
+                    get_total()
+                case 4:
+                    break
+                case _:
+                    print("Invalid operation")
 
-        match option:
-            case 1:
-                add_product()
-            case 2:
-                remove_product()
-            case 3:
-                get_total()
-            case 4:
-                break
-            case _:
-                print("Invalid operation")
+        except ValueError as e:
+            print("Invalid option")
 
 
 def add_product():
